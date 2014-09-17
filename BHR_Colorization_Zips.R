@@ -1,5 +1,4 @@
 # PLOT OF US-Dots, Zip-Binned Colors
-
 library(maps)
 data(us.cities)
 
@@ -165,9 +164,44 @@ text(locator(1), 'San Francisco', cex=0.8)
 map('county', bg="steelblue", col="#cccccc", fill=T, regions='california,san francisco')
 symbols(x=bhr$long, y=bhr$lat, circles=bhr$fixrad, fg=fillstat, add=T, inches=0.04, bg=fillstat)
 legend(locator(1), legend=c('100+', '50+', '25+', '< 25'), fill=c('red', 'green', 'blue', '#F7C53A'), title = 'N per Zip')
+#text(bhr$long, bhr$lat, bhr$zip, col='darkred', pos = 4, cex=.6)
+
+#bhr.sf <- subset(bhr, county == 'San Francisco')
+
+#tail(bhr.sf, 20)
+
+# CALIFORNIA STATE MAPPING
+map('county', 'california', bg='steelblue', col='darkgray', fill=T)
+#symbols(x=bhr$long, y=bhr$lat, circles=bhr$r, fg=fillstat, add=T, inches=0.04, bg=fillstat)
+bhr.ca <- subset(bhr, bhr$state == 'CA')
+fillca <- c()
+
+for (i in 1:length(bhr.ca$n)) {
+    
+    if (bhr.ca$n[i] >= 100) {
+        
+        fillca <- c(fillca, "red")
+        
+    } else {
+        
+        if (bhr.ca$n[i] >= 50 & bhr.ca$n[i] < 100) {
+            
+            fillca <- c(fillca, "green")
+            
+        } else {
+            
+            if (bhr.ca$n[i] >= 25 & bhr.ca$n[i] < 50) {
+                
+                fillca <- c(fillca, "blue")
+                
+            } else {
+                
+                fillca <- c(fillca, "#F7C53A")
+            }
+        }
+    }
+}
+symbols(x=bhr.ca$long, y=bhr.ca$lat, circles=bhr.ca$fixrad, fg=fillca, add=T, inches=0.01, bg=fillca)
+
+legend(locator(1), legend=c('100+', '50+', '25+', '< 25'), fill=c('red', 'green', 'blue', '#F7C53A'), title = 'N per Zip')
 map.cities(x=us.cities,minpop=500000, label=T, pch=3, col="blue")
-
-bhr.sf <- subset(bhr, county == 'San Francisco')
-
-tail(bhr.sf, 20)
-
