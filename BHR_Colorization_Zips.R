@@ -12,7 +12,8 @@ map('state', bg="steelblue", col="#A8DDB5", fill=T)
 # READ AND PREP BHR CSV data 
 # (required: each row is a zip with a corresponding 'n'. Optional: county names and lat/lon per zip. Can also get elsewhere.)
 
-bhr <- read.csv("/Users/vhasfcbuckls/Desktop/GeoSpatial/BHR_ByZipCode-2014.07.29.csv", header=T)
+#bhr <- read.csv("/Users/vhasfcbuckls/Desktop/GeoSpatial/data/BHR_ByZipCode-2014.07.29.csv", header=T)
+bhr <- read.csv("/Users/vhasfcbuckls/Desktop/GeoSpatial/data/BHR_ByZipCode-2014-09-16.csv", header=T)
 bhr <- na.omit(bhr)
 bhr <- bhr[order(bhr$n, decreasing=F),]
 bhr$county <- tolower(bhr$county)
@@ -111,6 +112,11 @@ bay <- subset(bhr, bhr$county %in% counties)
 # 'REGIONS' MUST TAKE THIS FORM, FOR EXAMPLE: #regions <- c("california,san francisco")
 map('county', bg="steelblue", col="#cccccc", fill=T, regions=regions, fg='darkred')
 
+#################
+# ALTERNATE ZOOM: 
+map('county', 'california', bg='steelblue', ylim=c(37.6, 37.95), xlim=c(-122.62, -122), fill=T, col='darkgray')
+symbols(x=(bhr$long + .015), y=bhr$lat, circles=bhr$fixrad, fg=fillstat, add=T, inches=0.04, bg=fillstat)
+
 # 4- Create a Dot-coloring scheme: FILL THE BAY!
 fillbay <- c()
 
@@ -156,17 +162,22 @@ text(locator(1), 'San Francisco', cex=0.8)
 # legend(x=c(-125), y=c(32), legend=c('> 25', '< 25'), fill=c('red', '#F7C53A'), title = 'N per Zip')
 
 # ADD MAJOR CITY NAMES ?
-# map.cities(x=us.cities,minpop=500000, label=T, pch=3, col="blue")
+# map.cities(x=us.cities,minpop=75000, label=T, pch=3, col="blue")
 # add annotations? 
 # text(locator(1), 'sometext') ... point and click to add 'sometext' to graphic to that location.
 
-# SF-ONLY MAPPING STUFF
+################################
+# SAN FRANCISCO-ONLY SECTION
 map('county', bg="steelblue", col="#cccccc", fill=T, regions='california,san francisco')
-symbols(x=bhr$long, y=bhr$lat, circles=bhr$fixrad, fg=fillstat, add=T, inches=0.04, bg=fillstat)
-legend(locator(1), legend=c('100+', '50+', '25+', '< 25'), fill=c('red', 'green', 'blue', '#F7C53A'), title = 'N per Zip')
-#text(bhr$long, bhr$lat, bhr$zip, col='darkred', pos = 4, cex=.6)
+bhr.sf <- subset(bhr, county == 'san francisco')
 
-#bhr.sf <- subset(bhr, county == 'San Francisco')
+# longitude needs small correction factor to avoid oceanic dots!
+correction <- .015
+symbols(x=(bhr$long+correction), y=bhr$lat, circles=bhr$fixrad, fg=fillstat, add=T, inches=0.04, bg=fillstat)
+legend(locator(1), legend=c('100+', '50+', '25+', '< 25'), fill=c('red', 'green', 'blue', '#F7C53A'), title = 'N per Zip')
+
+# OPTION: plot the zips (text) next to dots
+#text(bhr$long, bhr$lat, bhr$zip, col='darkred', pos = 4, cex=.6)
 
 #tail(bhr.sf, 20)
 
