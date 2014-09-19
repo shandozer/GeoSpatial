@@ -162,7 +162,7 @@ text(locator(1), 'San Francisco', cex=0.8)
 # legend(x=c(-125), y=c(32), legend=c('> 25', '< 25'), fill=c('red', '#F7C53A'), title = 'N per Zip')
 
 # ADD MAJOR CITY NAMES ?
-# map.cities(x=us.cities,minpop=75000, label=T, pch=3, col="blue")
+# map.cities(x=us.cities,minpop=75000, label=T, pch=1, col="black", cex=.75)
 # add annotations? 
 # text(locator(1), 'sometext') ... point and click to add 'sometext' to graphic to that location.
 
@@ -215,4 +215,4 @@ for (i in 1:length(bhr.ca$n)) {
 symbols(x=bhr.ca$long, y=bhr.ca$lat, circles=bhr.ca$fixrad, fg=fillca, add=T, inches=0.01, bg=fillca)
 
 legend(locator(1), legend=c('100+', '50+', '25+', '< 25'), fill=c('red', 'green', 'blue', '#F7C53A'), title = 'N per Zip')
-map.cities(x=us.cities,minpop=500000, label=T, pch=3, col="blue")
+map.cities(x=us.cities,minpop=400000, label=T, pch=3, col="blue")
