@@ -1,5 +1,7 @@
 # PLOT OF US-Dots, Zip-Binned Colors
 library(maps)
+library(zipcode)
+data(zipcode)
 data(us.cities)
 
 # U.S. BASE-MAP with pretty colors
