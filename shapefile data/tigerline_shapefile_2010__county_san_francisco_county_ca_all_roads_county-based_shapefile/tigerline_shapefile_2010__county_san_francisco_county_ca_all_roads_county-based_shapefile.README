@@ -1,0 +1,14 @@
+TIGER/Line Shapefile, 2010,  county, San Francisco County, CA, All Roads County-based Shapefile
+
+The TIGER/Line Files are shapefiles and related database files (.dbf) that are an extract of selected geographic and cartographic information from the U.S. Census Bureau's Master Address File / Topologically Integrated Geographic Encoding and Referencing (MAF/TIGER) Database (MTDB).  The MTDB represents a seamless national file with no overlaps or gaps between parts, however, each TIGER/Line File is designed to stand alone as an independent data set, or they can be combined to cover the entire nation.  The All Roads Shapefile includes all features within the MTDB Super Class "Road/Path Features" distinguished where the MAF/TIGER Feature Classification Code (MTFCC) for the feature in MTDB tha begin with "S".  This includes all primary, secondary, local neighborhood, and rural roads, city streets, vehicular trails (4wd), ramps, service drives, alleys, parking lot roads, private roads for service vehicles (logging, oil fields, ranches, etc.), bike paths or trails, bridle/horse paths, walkways/pedestrian trails, and stairways.  
+
+
+Attributes:
+MTFCC: MAF/TIGER feature class code - 
+LINEARID: Linear feature identifier - 
+STATEFP: Current state Federal Information Processing Standards (FIPS)                  code - 
+FULLNAME: Concatenation of expanded text for prefix qualifier, prefix                  direction, prefix type, base name, suffix type, suffix                  direction, and suffix qualifier (as available) with a space                  between each expanded text fi - 
+RTTYP: Route type code - 
+COUNTYFP: Current county Federal Information Processing Standards (FIPS)                  code - 
+
+exported on Sun Aug 31 16:23:23 -0400 2014
