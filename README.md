@@ -1,5 +1,5 @@
 # Mapping code and maps
 
 ## 1.0
-* Brain Health Registry 
-* Jobs type and monetary analysis for painting contractor data
+* Brain Health Registry code & maps
+* Example: geospatial business analysis for painting contractor
